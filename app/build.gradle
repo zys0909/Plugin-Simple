@@ -1,9 +1,9 @@
-apply from: 'test.gradle'
+//apply from: 'test.gradle'
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'app-rename'
-apply plugin: 'command'
+//apply plugin: 'publish-aar'
+//apply plugin: 'command'
 /*rename{
     // 指定渠道包的输出路径
     apkOutputFolder = new File(project.buildDir, 'apk')

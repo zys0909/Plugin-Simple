@@ -13,7 +13,7 @@ plugins {
     // Apply the Groovy plugin to add support for Groovy
     id 'groovy'
 
-    id 'maven-publish'
+    id 'maven'
 }
 
 repositories {
@@ -25,30 +25,35 @@ gradlePlugin {
     // Define the plugin
     plugins {
         greeting {
-            id = 'publish.plugin.greeting'
-            implementationClass = 'publish.plugin.PublishPluginPlugin'
+            id = 'publish-aar'
+            implementationClass = 'com.centa.plugin.PublishPlugin'
         }
     }
 }
+def GROUP = 'com.zys.android'
+def VERSION_NAME = "0.0.9"
+def POM_ARTIFACT_ID = "plugin"
+def NEXUS_DESC = 'salehouse plugin for android'
+def NEXUS_URL = "file:$rootDir/repo"
 
-
-publishing {
+uploadArchives {
     repositories {
-        maven {
-            // $rootDir 表示你项目的根目录
-            url = "$rootDir/repo"
-        }
-    }
-    publications {
-        // 这里的 hello 可以任意命名
-        hello(MavenPublication) {
-            // 插件的组ID，建议设置为插件的包名
-            groupId = 'com.zys.publish'
-            // 翻译过来是 工件ID，我的理解是插件的名字
-            artifactId = 'hello'
-            version = '0.0.10'
-            // 组件类型，我们的插件其实就是Java组件
-            from components.java
+        mavenDeployer {
+            repository(url: NEXUS_URL) {
+//                authentication(userName: NEXUS_USERNAME, password: NEXUS_PASSWORD)
+            }
+
+            snapshotRepository(url: NEXUS_URL) {
+//                authentication(userName: NEXUS_USERNAME, password: NEXUS_PASSWORD)
+            }
+
+            pom.project {
+                version = VERSION_NAME
+                groupId = GROUP
+                artifactId = POM_ARTIFACT_ID
+                packaging = 'jar'
+                description = NEXUS_DESC
+            }
         }
     }
 }

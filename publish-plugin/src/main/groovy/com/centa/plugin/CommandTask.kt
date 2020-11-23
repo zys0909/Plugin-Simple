@@ -1,4 +1,4 @@
-package com.zys.publish.rename
+package com.centa.plugin
 
 import org.gradle.api.tasks.AbstractExecTask
 import org.gradle.internal.os.OperatingSystem

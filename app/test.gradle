@@ -4,7 +4,7 @@ project.afterEvaluate {
         def command1 = ["cmd", "/c", "gradlew.bat"]
         def command2 = ["gradlew"]
 
-        group "test"
+        group "centa"
         workingDir rootDir
 
 //        println("environment : " + environment.toString())

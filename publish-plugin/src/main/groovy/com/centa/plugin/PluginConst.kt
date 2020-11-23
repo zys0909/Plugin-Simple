@@ -1,4 +1,4 @@
-package publish.plugin
+package com.centa.plugin
 
 /**
  * 描述:
