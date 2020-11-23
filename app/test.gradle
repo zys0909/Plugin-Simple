@@ -1,0 +1,31 @@
+project.afterEvaluate {
+
+    tasks.create("name": "test-command", "type": Exec) {
+        def command1 = ["cmd", "/c", "gradlew.bat"]
+        def command2 = ["gradlew"]
+
+        group "test"
+        workingDir rootDir
+
+//        println("environment : " + environment.toString())
+
+
+        println("before ====== args - " + args.toString())
+        println("before commandLine - " + commandLine.toString())
+
+        setCommandLine(command1)
+        setArgs(["clean"])
+
+
+        println("after  ====== args - " + args.toString())
+        println("after  commandLine - " + commandLine.toString())
+
+        println(argumentProviders.toString())
+    }
+
+
+}
+
+static def isWindows() {
+    return org.gradle.internal.os.OperatingSystem.current().isWindows()
+}
