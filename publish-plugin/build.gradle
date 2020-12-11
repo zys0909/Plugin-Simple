@@ -20,18 +20,25 @@ repositories {
     // Use JCenter for resolving dependencies.
     jcenter()
 }
+dependencies {
+    compileOnly 'com.android.tools.build:gradle:4.0.1'
+}
 
 gradlePlugin {
     // Define the plugin
     plugins {
         greeting {
             id = 'publish-aar'
-            implementationClass = 'com.centa.plugin.PublishPlugin'
+            implementationClass = 'com.centa.plugin.publish.PublishPlugin'
+        }
+        rename {
+            id = 'rename'
+            implementationClass = 'com.centa.plugin.rename.ReNamePlugin'
         }
     }
 }
 def GROUP = 'com.zys.android'
-def VERSION_NAME = "0.0.9"
+def VERSION_NAME = "0.0.24"
 def POM_ARTIFACT_ID = "plugin"
 def NEXUS_DESC = 'salehouse plugin for android'
 def NEXUS_URL = "file:$rootDir/repo"

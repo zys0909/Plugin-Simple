@@ -2,14 +2,14 @@
 buildscript {
     ext.kotlin_version = "1.4.0"
     repositories {
+        maven { url "$rootDir/repo" }
         google()
         jcenter()
-        maven { url("$rootDir/repo") }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.0.0"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-//        classpath "com.centanet.android:plugin:0.0.1"
+        classpath "com.zys.android:plugin:0.0.23"
 //        classpath project(":publish-plugin")
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -18,7 +18,6 @@ buildscript {
 
 allprojects {
     repositories {
-        maven { url("$rootDir/repo") }
         google()
         jcenter()
     }
